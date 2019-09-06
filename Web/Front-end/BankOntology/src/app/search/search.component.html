@@ -1,0 +1,113 @@
+<div class="container-fluid background-image">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-container">
+        <h3 class="title">Ontology Search</h3>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="wrap-input100 input100-select">
+            <span class="label-input100">Select Bank</span>
+
+            <div>
+              <select class="form-control" name="bank" ngModel id="bank">
+                <option value="" disabled selected>Choose a Bank</option>
+                <option value="Bank_of_Ceylon">Bank of Ceylon</option>
+                <option value="Peoples_Bank">Peoples Bank</option>
+                <option value="Natoional_Savings_Bank"
+                  >National Saving Bank</option
+                >
+              </select>
+            </div>
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 input100-select">
+            <span class="label-input100">Select Branch Location</span>
+            <div>
+              <select class="form-control" name="branch" ngModel id="branch">
+                <option value="" disabled selected>Select a Branch</option>
+                <option value="Moratuwa">Moratuwa</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Elpitiya">Elpitiya</option>
+                <option value="Kalutara">Kalutara</option>
+              </select>
+            </div>
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 input100-select">
+            <span class="label-input100">Select Account Type</span>
+            <div>
+              <select
+                multiple
+                class="form-control"
+                name="account"
+                ngModel
+                id="account"
+              >
+                <!-- <option>Select Account Type</option> -->
+                <option value="ChildrenSaving">Children Saving</option>
+                <option value="GeneralSaving">General Saving</option>
+                <option value="WomenSaving">Women Saving</option>
+                <option value="TeenSaving">Young Saving</option>
+                <option value="SeniorCitizenSaving"
+                  >Senior Citizen Saving</option
+                >
+                <option value="CurrentAccount">Current Account</option>
+                <option value="FixedDeposite">Fixed Deposite</option>
+                <option value="CoOperateLending">CoOperate Lending</option>
+                <option value="EducationalLoan">Educational Loan</option>
+                <option value="HousingLoan">Housing Loan</option>
+                <option value="PersonalLoan">Personal Loan</option>
+                <option value="DevelopmentLoan">Development Loan</option>
+                <option value="Prawning">Pawning</option>
+              </select>
+            </div>
+            <span class="focus-input100"></span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-lg" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="form-container">
+        <h3 class="title">Ontology Results</h3>
+
+        <div
+          *ngIf="results.length == 0; else other_content"
+          style="text-align: center;padding-top: 25vh"
+        >
+          No result available!!!
+        </div>
+
+        <ng-template #other_content>
+          <div style="height:65vh;overflow-y: auto;">
+            <table class="table">
+              <thead class="thead-light">
+                <tr class="d-flex">
+                  <th class="col-8">Link of the User</th>
+                  <th class="col-2">First Name</th>
+                  <th class="col-2">Last Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="table-data d-flex"
+                  *ngFor="let result of results; let idx = index"
+                  style="font-size: 13px"
+                >
+                  <td class="col-8 ">
+                    {{ result.user.value }}
+                  </td>
+                  <td class="col-2">{{ result.firstName.value }}</td>
+                  <td class="col-2">{{ result.lastName.value }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

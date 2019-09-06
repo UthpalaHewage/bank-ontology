@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div
+    class="row"
+    style="background: #1c252e; border-radius: 10px;margin-left: 20px;margin-right: 20px;height: 70px;"
+  >
+    <form class="form-inline" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="id_number" class="sr-only">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          id="id_number"
+          placeholder="ID Number"
+          ngModel
+          name="id_number"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">
+        Search Accounts
+      </button>
+    </form>
+  </div>
+  <p></p>
+  <div
+    class="row"
+    style="background: #1c252e; border-radius: 10px;margin-left: 20px;margin-right: 20px;height: 72vh;"
+  >
+    <div
+      *ngIf="results.length == 0; else other_content"
+      style="text-align: center ! important;padding-top: 25vh;width: 100%"
+    >
+      No result available!!!
+    </div>
+
+    <ng-template #other_content style="width: 100%">
+      <div style="height:60vh;overflow-y: auto;width: 100%;padding: 10px;">
+        <table class="table">
+          <thead class="thead-light">
+            <tr class="d-flex">
+              <th class="col-1">First Name</th>
+              <th class="col-1">Last Name</th>
+              <th class="col-2">Bank Name</th>
+              <th class="col-2">Branch</th>
+              <th class="col-2">Account Number</th>
+              <th class="col-2">Account Name</th>
+              <th class="col-2">Balance(Rs.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="table-data d-flex"
+              *ngFor="let result of results; let idx = index"
+              style="font-size: 13px"
+            >
+              <td class="col-1">{{ result.firstName.value }}</td>
+              <td class="col-1">{{ result.lastName.value }}</td>
+              <td class="col-2">{{ result.bankName.value }}</td>
+              <td class="col-2">{{ result.branchCity.value }}</td>
+              <td class="col-2">{{ result.accountNo.value }}</td>
+              <td class="col-2">{{ result.accountName.value }}</td>
+              <td class="col-2">{{ result.accountBalance.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </div>
+</div>

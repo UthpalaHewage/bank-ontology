@@ -1,0 +1,40 @@
+.background-image {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: black;
+}
+
+.form-container {
+  width: 100%;
+  min-height: 85vh;
+  background: #1c252e;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px 55px 45px 55px;
+  color: azure;
+}
+.title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 39px;
+  color: aliceblue;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.wrap-input100 {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid #d9d9d9;
+  padding-bottom: 13px;
+  margin-bottom: 27px;
+}
+.label-input100 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  color: aliceblue;
+  line-height: 1.5;
+  padding-left: 5px;
+}
